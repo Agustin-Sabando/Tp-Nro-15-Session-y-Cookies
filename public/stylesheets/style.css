@@ -1,0 +1,57 @@
+body {
+  padding: 50px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 16px;
+}
+
+.titulo {
+  display: flex;
+  justify-content: center;
+}
+
+.bienvenido {
+  display: flex;
+  justify-content: center;
+}
+
+.registrado {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.titulo {
+  display: flex;
+  justify-content: center;
+}
+
+.link {
+  color: white;
+  display: flex;
+  justify-content: center;
+}
+
+.formulario {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.input-nombre,
+.input-colores,
+.input-mail,
+.input-edad{
+  width: 60%;
+  padding: 10px 0;
+  border-radius: 12px
+}
+
+.error {
+  color: crimson;
+}
+
+button{
+  background-color:aquamarine;
+  color: black;
+  font-weight: bold;
+}

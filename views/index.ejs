@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Formulario de colores</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+
+  <body style="background-color: <%= locals.Colores ? locals.Colores : null %>">
+    <h2 class="titulo">Comienzo Del Formulário</h2>
+
+    <% if(locals.nombre){ %>
+      <div>
+        <div class = "bienvenido">
+          ¡Bienvenidx! <%= nombre %>
+        </div>
+        <div>
+          <% if (edad) { %>
+            <h2 class = "registrado">Hola!! ojalá tengas un excelente día <%= nombre %>, gracias por confiar en nosotros, el día de hoy, elegiste el color: <%= color %>, e ingresaste a la página con el email: <%= email %>, con la grandiosa edad de: <%= edad %></h2>
+        <%  }else{ %>                    
+          <h2 class = "registrado">Hola!! ojalá tengas un excelente día <%= nombre %>, gracias por confiar en nosotros, el día de hoy, elegiste el color: <%= color %>, e ingresaste a la página con el email: <%= email %>.</h2>
+        <% } %>
+          <a href="/logout" class="link">Salir</a>
+        </div>
+      </div> 
+
+  <% }else{ %>
+
+    <form method="POST">
+      <div class="formulario">
+        <input type="text" class="input-nombre" id="nombre" placeholder="Ingrese Su Nombre Completo" name="nombre" value="<%= locals.old && old.nombre ? old.nombre : null %>">
+        <span class = "error"><%= locals.errors && errors.nombre ? errors.nombre.msg : null %></span>
+      </div>
+
+      <div class="formulario">
+        <select class="input-colores" id="exampleFormControlSelect1" name="color">          
+          <option value="<%= locals.old && old.color ? old.color : null %>"><%= locals.old && old.color ? old.color : "Elija Un Color De La Lista:" %></option>
+          <option value="LightSalmon">LightSalmon</option>
+          <option value="IndianRed">IndianRed</option>>
+          <option value="DarkCyan">DarkCyan</option>
+        </select>
+        <span class = "error"><%= locals.errors && errors.color ? errors.color.msg : null %></span>
+      </div>
+
+      <div class="formulario">
+        <input type="email" class="input-mail" id="exampleFormControlInput1" placeholder="Ingrese Su Email" name="email" value="<%= locals.old && old.email ? old.email : null %>">
+        <span class = "error"><%= locals.errors && errors.email ? errors.email.msg : null %></span>
+      </div>   
+
+      <div class="formulario">
+        <input t class="input-edad" id="exampleFormControlInput1" placeholder="Ingrese Su Edad" name="edad" value="<%= locals.old && old.edad ? old.edad : null %>">
+        <span class = "error"><%= locals.errors && errors.edad ? errors.edad.msg : null %></span>
+      </div>   
+
+      <div class="formulario">
+        <input type="checkbox" class="input-checkbox" name="remember">
+        <label for="remember">Recordar Color</label>
+      </div>
+
+      <button  type="submit">Enviar Formulario</button>      
+      <a style="color: white;" href="/destroy" class="btn btn-warning btn-block">Resetear Color</a>
+    </form>
+    <% } %>
+
+  </body>
+</html>
