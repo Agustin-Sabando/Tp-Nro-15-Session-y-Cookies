@@ -16,7 +16,14 @@ module.exports = {
                   res.locals.Colores = req.session.Colores;
 
                   if(remember){
-                      res.cookie('Colores', req.session.Colores, {maxAge: 1000 * 60})
+
+                    res.cookie('Colores', req.session.Colores, {maxAge: 1000 * 60})
+
+                  } else {
+
+                    req.session.destroy();
+                    res.cookie('Colores', null, {maxAge: -1})
+
                   }
 
                   return res.render('index', {
@@ -32,17 +39,13 @@ module.exports = {
                     errors: errors.mapped()
                   })
         }     
-    },
-    logout : (req, res) =>{
-        res.render('logout')
-    },
-    
+    }, 
     destroy: (req, res) => {
         req.session.destroy();
         res.cookie('Colores', null, {maxAge: -1})
         res.redirect('/')
     } 
       
-    }   
+}   
 
 
